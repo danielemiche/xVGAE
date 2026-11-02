@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xvgae"
+version = "1.0.0"
+description = "xVGAE: a hierarchical variational graph autoencoder for exchangeable graphs (NeurIPS 2026)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Daniele Micheletti", email = "dmichele@uci.edu"}, {name = "Federica Zoe Ricci"}, {name = "Erik B. Sudderth"}]
+dependencies = ["torch>=2.4", "torch_geometric>=2.5", "numpy>=1.24", "scipy>=1.10", "networkx>=3.0",
+                "scikit-learn>=1.3", "threadpoolctl>=3.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["xvgae*"]
+
+[tool.setuptools.package-data]
+xvgae = ["*.json"]

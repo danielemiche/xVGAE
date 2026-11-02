@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "xVGAE: A Hierarchical Variational Graph Autoencoder for Exchangeable Graphs"
+authors:
+  - family-names: Micheletti
+    given-names: Daniele
+    affiliation: "University of California, Irvine"
+    email: "dmichele@uci.edu"
+  - family-names: Ricci
+    given-names: Federica Zoe
+    affiliation: "Swarthmore College"
+  - family-names: Sudderth
+    given-names: Erik B.
+    affiliation: "University of California, Irvine"
+license: MIT
+repository-code: "https://github.com/danielemiche/xVGAE"
+url: "https://arxiv.org/abs/2610.30815"
+identifiers:
+  - type: other
+    value: "arXiv:2610.30815"
+    description: "arXiv preprint"
+preferred-citation:
+  type: conference-paper
+  title: "xVGAE: A Hierarchical Variational Graph Autoencoder for Exchangeable Graphs"
+  authors:
+    - family-names: Micheletti
+      given-names: Daniele
+    - family-names: Ricci
+      given-names: Federica Zoe
+    - family-names: Sudderth
+      given-names: Erik B.
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS)"
+  year: 2026

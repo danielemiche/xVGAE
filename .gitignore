@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+/build/
+# data, runs and outputs (never committed)
+/data/
+/runs/
+/samples/
+/results/
+# ORCA is downloaded and built by scripts/build_orca.sh (GPL-3.0, not part of this repository)
+/xvgae/orca/

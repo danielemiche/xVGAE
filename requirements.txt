@@ -1,0 +1,10 @@
+# Tested with Python 3.10.20 (CPU and CUDA 12.8). Install torch first for your platform (https://pytorch.org), then the rest.
+torch==2.11.0
+torch_geometric==2.7.0
+numpy==2.2.6
+scipy==1.15.2
+networkx==3.4.2
+scikit-learn==1.7.2
+threadpoolctl==3.6.0
+# tests only
+pytest==9.0.3
