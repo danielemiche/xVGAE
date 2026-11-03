@@ -68,10 +68,6 @@ python scripts/sample.py --run runs/<row> --ddpm-dir runs/<row>/z0_ddpm --out-di
 python scripts/score.py --name <corpus> --data data --samples samples/<row>
 ```
 
-`citeseer_ego_sab` is the one row outside the standard recipe (GT encoder, β = β0 = 1 throughout, KL floor 0.5, constant lr,
-20000 epochs). It trains for about 37 h on one GPU, past the 10 h default stop (exit 12): continue it with
-`--resume runs/citeseer_ego_sab` until it finishes, or pass a larger `--max-walltime-h`.
-
 ## Short CPU runs and cost
 
 On 4 CPU threads one update takes 0.2-0.5 s at n ~ 80, so the full budget needs a GPU. A quick model:
@@ -97,5 +93,5 @@ Approximate cost with the configs in `configs/`:
 | `sample.py`: DDPM state pick, 3 test draws | - | 14-71 min (MMSBM) |
 | `score.py`, 3 draws: TV; EMD | - | 1-10 min; 1.5-19 min |
 
-`citeseer_ego_sab` (20000 epochs) takes about 37 h. On 4 CPU threads stage 1 takes 4-20 h, so train it on a GPU. Sampling
+On 4 CPU threads stage 1 takes 4-20 h, so train it on a GPU. Sampling
 and scoring run on the CPU: peak 6.5 GB on MMSBM, at most 2.6 GB on the other corpora.

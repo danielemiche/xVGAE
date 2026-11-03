@@ -1,9 +1,10 @@
 """Score sample files (one .npz per draw) and aggregate them into a table row.
 
     python scripts/score.py --name mmsbm_medium --data data --samples samples/mmsbm_mlp --out results/mmsbm_mlp.json
-Per draw: MMD^2 of degree, clustering, spectral, orbit and WL against the test split (LCC, Gaussian-TV kernel) and the
-C2ST accuracy; ratio = MMD^2 / train-vs-test floor; row = median over the draws [min, max]; Agg = geometric mean over the
-ranked statistics. A paper corpus uses the paper's floor and clustering bandwidth; your own corpus has both measured.
+Per draw: MMD^2 of degree, clustering, spectral, orbit and WL against the test split (LCC) and the C2ST accuracy. The
+default kernel is a Gaussian on the earth mover's distance with bandwidths fitted on the training graphs, so that no
+statistic saturates; --kernel tv gives the Gaussian-TV kernels of the GraphRNN protocol. Ratio = MMD^2 / train-vs-test
+floor; row = median over the draws [min, max]; Agg = geometric mean over the ranked statistics.
 """
 import argparse
 import glob
@@ -20,7 +21,7 @@ def main():
     ap.add_argument("--name", "--dataset", dest="name", required=True, help="corpus name")
     ap.add_argument("--data", help="data root (default $XVGAE_DATA_DIR, else ./data)")
     ap.add_argument("--samples", required=True, help="comma-separated .npz files or directories")
-    ap.add_argument("--kernel", choices=("tv", "emd"), default="tv")
+    ap.add_argument("--kernel", choices=("emd", "tv"), default="emd")
     ap.add_argument("--sigma-clustering", choices=("fitted", "published"), default="fitted",
                     help="TV clustering bandwidth: median train TV distance, or 0.1")
     ap.add_argument("--saturation", choices=("off", "report", "exclude"), default="report",
