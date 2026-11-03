@@ -5,10 +5,10 @@ Daniele Micheletti, Federica Zoe Ricci, Erik B. Sudderth · NeurIPS 2026 · [arX
 xVGAE is a variational autoencoder for graphs whose latent structure follows the Aldous–Hoover representation of
 exchangeable graphs. Each graph has a global latent $z_0$ and one latent $z_i$ per node:
 
-$$z_0 \sim p_\theta(z_0), \qquad z_i \mid z_0 \overset{\text{iid}}{\sim} p_\theta(z_i \mid z_0), \qquad A_{ij} \sim \mathrm{Bernoulli}\big(\omega_\theta(z_0, z_i, z_j)\big).$$
+$$z_0 \sim p_\theta(z_0), \qquad z_i \mid z_0 \overset{\text{iid}}{\sim} p_\theta(z_i \mid z_0), \qquad A_{ij} \mid z, z_0 \sim \mathrm{Bernoulli}\big(\omega_{ij}(z, z_0)\big),$$
 
-The prior on $z_0$ is a latent diffusion model (DDPM). The decoder is either a pointwise MLP on $(z_0, z_i)$
-(xVGAE-MLP, a graphon) or set-attention layers over all nodes (xVGAE-SAB, where $\omega_\theta$ depends on all node latents).
+with $z = (z_1, \dots, z_n)$. The prior on $z_0$ is a latent diffusion model (DDPM). The decoder is either set-attention
+layers over all nodes (xVGAE-SAB) or a pointwise MLP on $(z_0, z_i)$ (xVGAE-MLP).
 
 <p align="center"><img src="docs/img/global_latent_z0.png" width="100%" alt="PCA of the global latent z0 on the test graphs of MMSBM, LFR, Ego and Protein"></p>
 <p align="center"><em>The global latent z<sub>0</sub> (PCA, one point per test graph) embeds structural information of the graphs.</em></p>
