@@ -16,7 +16,7 @@
  "bilinear_heads": 8,
  "rank": 4,
  "batch_size": 8,
- "epochs": 20000,
+ "epochs": 3000,
  "lr": 0.0005,
  "lr_min": 2.5e-05,
  "lr_schedule": "constant",

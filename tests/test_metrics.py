@@ -45,16 +45,6 @@ def test_c2st_and_score_set():
     assert other["c2st_acc"] > max(0.9, same["c2st_acc"]) and other["degree"] > same["degree"]
 
 
-def test_paper_agg_from_frozen_draws():
-    e = M.paper_reference("citeseer_ego")
-    a = M.aggregate(e["reference_rows"]["citeseer_ego_sab"], e["floor_draws"], "citeseer_ego")
-    assert (round(a["agg"], 2), round(a["agg_per_draw_min"], 2), round(a["agg_per_draw_max"], 2)) == (6.74, 6.35, 8.81)
-    assert round(a["c2st_delta"], 3) == 0.102 and "orbit" not in a["ranked"]
-    e = M.paper_reference("mmsbm_medium")
-    a = M.aggregate(e["reference_rows"]["mmsbm_mlp"], e["floor_draws"], "mmsbm_medium")
-    assert round(a["agg"], 2) == 1.30 and round(a["agg_per_draw_median"], 2) == 1.49 and round(a["c2st_delta"], 3) == 0.032
-
-
 def test_npz_round_trip(tmp_path):
     gs = [nx.gnp_random_graph(n, 0.3, seed=n) for n in (5, 9, 12)]
     back = M.load_samples(M.write_npz(gs, str(tmp_path / "s.npz")))

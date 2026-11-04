@@ -114,7 +114,7 @@ def validate(model, loader, beta, beta0, cfg):
 
 
 def selection_floor(dataset):
-    """{statistic: floor} of the validation MMD: the paper's for a paper corpus, else <data>/<name>/floor_selection.json."""
+    """{statistic: floor} of the validation MMD: stored for a built-in dataset, else <data>/<name>/floor_selection.json."""
     from xvgae.data import REFERENCE, data_root
     per = json.load(open(REFERENCE))["selection_floor"].get(dataset)
     p = os.path.join(data_root(), str(dataset), "floor_selection.json")
@@ -271,7 +271,7 @@ def check_validity(run_dir, quiet=False):
 
 def train_standard(dataset, decoder="sab", seed=None, run_dir=None, config=None, updates=None, max_walltime_h=None,
                    device=None, smoke=False, snapshots=20, free_bits=None, beta=None, beta0=None):
-    """Train one stage 1 with the standard recipe (or a paper row's config) and run the validity gate.
+    """Train one stage 1 with the standard recipe (or a config from configs/) and run the validity gate.
     Returns (run_dir, verdict)."""
     from xvgae.data import get_dataloaders, data_root
     dev = pick_device(device)

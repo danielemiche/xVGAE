@@ -39,9 +39,9 @@ bash scripts/build_orca.sh
 ## Train and generate
 
 The steps use MMSBM and the xVGAE-MLP configuration. The other datasets and decoders run the same way
-([Paper configurations](#paper-configurations)).
+([Configurations](#configurations)).
 
-**1. Data.** Build the dataset. Its edges are checked against those used in the paper.
+**1. Data.** Build the dataset. Its edges are checked against stored hashes.
 
 ```bash
 python scripts/make_data.py mmsbm_medium --out data
@@ -95,9 +95,9 @@ Train with the default recipe, then run steps 3-6 with `runs/mine` and `--name m
 python scripts/train_stage1.py --data data --name mine --decoder mlp --run-dir runs/mine
 ```
 
-## Paper configurations
+## Configurations
 
-`configs/` holds one file per row of the paper's tables, `<dataset>_<decoder>.json`, for the datasets `citeseer_ego`,
+`configs/` holds one configuration per dataset and decoder, `<dataset>_<decoder>.json`, for the datasets `citeseer_ego`,
 `mmsbm`, `lfr` and `protein` and the decoders `sab` and `mlp`.
 
 ```bash

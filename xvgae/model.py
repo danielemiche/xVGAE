@@ -1,6 +1,6 @@
 """xVGAE stage 1: a global latent z0 per graph and a latent z_i per node, and sampling with the z0 DDPM.
 
-Generation: n ~ training sizes, z0 ~ p(z0 | n) (the z0 DDPM in stage 2), z_i ~ p(z_i | z0), A_ij ~ Bernoulli(σ(s_ij)).
+Generation: n ~ training sizes, z0 ~ p(z0 | n) (the z0 DDPM in stage 2), z_i ~ p(z_i | z0), A_ij | z, z0 ~ Bernoulli(ω_ij(z, z0)), ω_ij = σ(s_ij).
 Loss per batch of B graphs: [sum_ij BCE + beta sum_i KL(q(z_i) || p(z_i | z0)) + beta0 KL(q(z0) || p(z0 | n))] / B.
 """
 import json
@@ -19,7 +19,7 @@ from xvgae.decoder import SetDecoder
 from xvgae.prior import NormalPrior, NConditioner, SizeHead, z0_size_prior
 
 # Architecture of the standard recipe. decoder "sab" = xVGAE-SAB, "mlp" = xVGAE-MLP; encoder_type "gt", size_head,
-# cond_decoder_n, local_cond_source "z0" and prior_fixed_var_one are used by some paper rows (configs/).
+# cond_decoder_n, local_cond_source "z0" and prior_fixed_var_one are used by some configs (configs/).
 ARCH = dict(z_dim=8, z0_dim=32, hidden_dim=64, num_layers=5, attn_heads=8, bilinear_heads=8, rank=4, decoder="sab",
             encoder_type="sab", local_cond_source="eigvals", cond_z0_prior_n=True, cond_decoder_n=False,
             prior_fixed_var_one=False, size_head=False)

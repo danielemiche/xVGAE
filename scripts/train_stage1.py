@@ -1,4 +1,4 @@
-"""Train stage 1 with the standard recipe (or a paper row's config), then the validity gate.
+"""Train stage 1 with the standard recipe (or a config from configs/), then the validity gate.
 
     python scripts/train_stage1.py --data data --name mmsbm_medium --decoder mlp --run-dir runs/mmsbm_mlp
     python scripts/train_stage1.py --config configs/mmsbm_mlp.json --data data --run-dir runs/mmsbm_mlp
@@ -18,7 +18,7 @@ def main():
     ap.add_argument("--name", "--dataset", dest="name", help="corpus name")
     ap.add_argument("--data", help="data root (default $XVGAE_DATA_DIR, else ./data)")
     ap.add_argument("--decoder", choices=["sab", "mlp"], help="default sab")
-    ap.add_argument("--config", help="a paper row's config (configs/<row>.json)")
+    ap.add_argument("--config", help="a config (configs/<dataset>_<decoder>.json)")
     ap.add_argument("--seed", type=int)
     ap.add_argument("--run-dir")
     ap.add_argument("--updates", type=int, help="gradient updates (default 75k)")

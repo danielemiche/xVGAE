@@ -35,6 +35,6 @@ From Python: `xvgae.data.build(graphs, "mine", out="data")`. Graphs up to a few 
 | `lfr_v2` | 640 / 160 / 200 | 200-500 | LFR benchmark, every parameter drawn per graph, seeded | ~20 min |
 | `protein` | 587 / 147 / 184 | 100-500 | D&D protein graphs (Dobson & Doig 2003), downloaded | a few min |
 
-Every split is checked against the paper corpus edges (SHA-256 in `xvgae/paper_reference.json`) when it is loaded.
+Every split of these four datasets is checked against stored edge hashes (SHA-256 in `xvgae/paper_reference.json`) when it is loaded.
 CiteSeer and D&D are downloaded through PyTorch Geometric; cite Sen et al. (2008), Yang et al. (2016), Dobson & Doig
 (2003) and Morris et al. (2020) when you use them.

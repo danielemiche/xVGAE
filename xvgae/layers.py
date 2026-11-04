@@ -47,7 +47,7 @@ class SpectralEmbedding(nn.Module):
 
 
 class MLP(nn.Module):
-    """Linear layers with SiLU in between (nn.Identity placeholders keep the parameter names of the paper checkpoints)."""
+    """Linear layers with SiLU in between (nn.Identity placeholders keep the parameter names stable)."""
 
     def __init__(self, input_size, hidden_sizes, output_size):
         super().__init__()

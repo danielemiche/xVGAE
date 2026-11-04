@@ -1,6 +1,6 @@
 """The four paper corpora, rebuilt exactly (edges checked against paper_reference.json by xvgae.data.load_split).
 
-citeseer_ego  3-hop ego graphs of CiteSeer with 50-400 nodes (Planetoid download), 484 / 121 / 152, k = 50
+citeseer_ego  3-hop ego graphs of CiteSeer with 50-399 nodes (Planetoid download), 484 / 121 / 152, k = 50
 mmsbm_medium  mixed-membership SBM, n 120-400, K in {3, 5}, seed 4242, 640 / 160 / 200, k = 100
 lfr_v2        LFR benchmark with every parameter drawn per graph, 640 / 160 + a fresh test set of 200, k = 20
 protein       D&D graphs with 100-500 nodes (TUDataset download), 587 / 147 / 184, k = 100

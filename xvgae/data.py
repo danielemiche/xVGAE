@@ -54,7 +54,7 @@ def check_schema(graphs, where):
 
 
 def load_split(name, split, root=None):
-    """The graphs of one split; a paper corpus is checked against its edge hash, your own against the schema."""
+    """The graphs of one split; a built-in dataset is checked against its edge hash, your own against the schema."""
     p = os.path.join(root or data_root(), name, f"{name}_{split}.pt")
     if not os.path.exists(p):
         how = name if name in PAPER_CORPORA else f"custom --graphs <file> --name {name}"
@@ -63,7 +63,7 @@ def load_split(name, split, root=None):
     if name in PAPER_CORPORA:
         ref = json.load(open(REFERENCE))["edge_sha256"][name][split]
         if edge_digest(graphs) != ref:
-            raise RuntimeError(f"{p}: its edges are not the paper corpus {name}/{split}; regenerate it (scripts/make_data.py)")
+            raise RuntimeError(f"{p}: its edges do not match the built-in dataset {name}/{split}; regenerate it (scripts/make_data.py)")
     else:
         check_schema(graphs, p)
     return graphs
@@ -152,7 +152,7 @@ def build(graphs, name, out="data", k="auto", lcc=False, fractions=(0.64, 0.16, 
     """Write the corpus `name` to out/name/: the three splits (a seeded random split unless `graphs` is a {train, val,
     test} dict), meta.json and floor_selection.json. k = auto: the smallest graph's n, at most 50, at least 8."""
     if name in PAPER_CORPORA or not name or os.sep in name or name.startswith("."):
-        raise ValueError(f"bad corpus name {name!r} (the paper corpus names are taken)")
+        raise ValueError(f"bad corpus name {name!r} (the built-in dataset names are taken)")
     if not isinstance(graphs, dict):
         graphs = list(graphs)
         idx = np.random.default_rng(seed).permutation(len(graphs))

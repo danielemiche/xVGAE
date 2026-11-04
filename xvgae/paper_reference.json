@@ -1,5 +1,5 @@
 {
- "_doc": "Paper-corpus references. edge_sha256: the edge hash of every split (xvgae.data.edge_digest). selection_floor: a fixed per-statistic scale of the in-training validation MMD that keeps model_best_gen.pt (one constant per statistic, so it never changes which epoch is kept). scoring: per corpus the clustering bandwidth, the 5 train-vs-test floor draws (seeds 0-4) and, for CiteSeer-Ego xVGAE-SAB and MMSBM xVGAE-MLP, the scores of the 3 paper test draws (seeds 100-102). c2st_null_sd: per corpus the SD of the validation C2ST accuracy when both sets are real (training graphs subsampled to |val| against the validation split, 10 seeds); the selection rule's noise scale.",
+ "_doc": "References of the built-in datasets. edge_sha256: the edge hash of every split (xvgae.data.edge_digest). selection_floor: a fixed per-statistic scale of the in-training validation MMD that keeps model_best_gen.pt (one constant per statistic, so it never changes which epoch is kept). scoring: per corpus the clustering bandwidth, the 5 train-vs-test floor draws (seeds 0-4). c2st_null_sd: per corpus the SD of the validation C2ST accuracy when both sets are real (training graphs subsampled to |val| against the validation split, 10 seeds); the selection rule's noise scale.",
  "edge_sha256": {
   "citeseer_ego": {
    "train": "0dc2b281f0693e777c9de4d4d1958476bbba7ec14537825a2fc6b19cfa8ab411",
@@ -203,44 +203,7 @@
      "n_mean": 149.44078947368422,
      "seed": 4
     }
-   ],
-   "reference_rows": {
-    "citeseer_ego_sab": [
-     {
-      "degree": 0.0025345694254037543,
-      "clustering": 0.03445949413383809,
-      "spectral": 0.004742823949780872,
-      "orbit": 0.031359591951504964,
-      "wl": 0.016813807677032333,
-      "c2st_acc": 0.5953005464480874,
-      "m_mean": 304.2368421052632,
-      "n_mean": 133.60526315789474,
-      "draw": "fully_ddpm_best_gen_s100"
-     },
-     {
-      "degree": 0.0023778139979244717,
-      "clustering": 0.02976980781565297,
-      "spectral": 0.004647146356582699,
-      "orbit": 0.03416364815129341,
-      "wl": 0.016635663871098938,
-      "c2st_acc": 0.6018579234972676,
-      "m_mean": 293.625,
-      "n_mean": 127.65131578947368,
-      "draw": "fully_ddpm_best_gen_s101"
-     },
-     {
-      "degree": 0.0037142180149278836,
-      "clustering": 0.03543678023439334,
-      "spectral": 0.007368008223312961,
-      "orbit": 0.03403218558397873,
-      "wl": 0.020960740656187138,
-      "c2st_acc": 0.6412021857923497,
-      "m_mean": 327.0328947368421,
-      "n_mean": 140.48684210526315,
-      "draw": "fully_ddpm_best_gen_s102"
-     }
-    ]
-   }
+   ]
   },
   "mmsbm_medium": {
    "sigma_clustering": 0.7708116021140876,
@@ -300,44 +263,7 @@
      "n_mean": 243.245,
      "seed": 4
     }
-   ],
-   "reference_rows": {
-    "mmsbm_mlp": [
-     {
-      "degree": 0.004046894428015646,
-      "clustering": 0.011271232715867274,
-      "spectral": 6.870527194990927e-05,
-      "orbit": 0.01,
-      "wl": 0.009124410220566037,
-      "c2st_acc": 0.465,
-      "m_mean": 9349.37,
-      "n_mean": 254.705,
-      "draw": "fully_ddpm_last_s100"
-     },
-     {
-      "degree": 0.003841716724753086,
-      "clustering": 0.005442230628175615,
-      "spectral": 5.7747913779326865e-05,
-      "orbit": 0.01,
-      "wl": 0.008660262443050737,
-      "c2st_acc": 0.5175000000000001,
-      "m_mean": 9387.59,
-      "n_mean": 246.74,
-      "draw": "fully_ddpm_last_s101"
-     },
-     {
-      "degree": 0.008071299590779235,
-      "clustering": 0.006435800030959893,
-      "spectral": 0.0005296315117235828,
-      "orbit": 0.01,
-      "wl": 0.013748739866916326,
-      "c2st_acc": 0.5325,
-      "m_mean": 9858.22,
-      "n_mean": 253.705,
-      "draw": "fully_ddpm_last_s102"
-     }
-    ]
-   }
+   ]
   },
   "lfr_v2": {
    "sigma_clustering": 0.5631826866417426,

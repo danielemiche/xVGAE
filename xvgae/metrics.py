@@ -445,7 +445,7 @@ def aggregate(draws, floor, ds, not_ranked=None):
 
 
 def paper_reference(ds):
-    """Scoring references of a paper corpus (clustering bandwidth, floor draws, paper draws), else None."""
+    """Scoring references of a built-in dataset (clustering bandwidth, floor draws), else None."""
     return json.load(open(REFERENCE))["scoring"].get(ds)
 
 

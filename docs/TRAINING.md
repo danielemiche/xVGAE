@@ -55,10 +55,11 @@ number of validation sets.
 Other levers of the standard recipe: `--beta0` (the Protein MLP row uses 1), `--decoder mlp`. With `--config`, the config
 fixes the decoder, β0 and the epochs: change them in a copy of the config.
 
-## The paper rows
+## Configurations
 
-One config per row of the paper's table, `configs/<row>.json`: `citeseer_ego_sab`, `citeseer_ego_mlp`, `mmsbm_sab`,
-`mmsbm_mlp`, `lfr_sab`, `lfr_mlp`, `protein_sab`, `protein_mlp`. Each row runs the steps of the README:
+One config per dataset and decoder, `configs/<row>.json`: `citeseer_ego_sab`, `citeseer_ego_mlp`, `mmsbm_sab`,
+`mmsbm_mlp`, `lfr_sab`, `lfr_mlp`, `protein_sab`, `protein_mlp`. Each trains within 12 h on one GPU and runs the steps
+of the README:
 
 ```bash
 python scripts/train_stage1.py --config configs/<row>.json --data data --run-dir runs/<row>
@@ -87,7 +88,7 @@ Approximate cost with the configs in `configs/`:
 
 | step | one RTX 6000 Ada | 8 CPU threads |
 |---|---|---|
-| stage 1, 938-1230 epochs | 1.7-2.7 h | - |
+| stage 1, 938-3000 epochs | 1.7-5.6 h | - |
 | `select_stage1.py`, 23 checkpoints | - | 7 min-2.1 h (MMSBM) |
 | `train_z0_ddpm.py`, 2000 epochs | under 1 h | 47-84 min |
 | `sample.py`: DDPM state pick, 3 test draws | - | 14-71 min (MMSBM) |

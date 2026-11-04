@@ -20,8 +20,9 @@ Ratio = MMD² / floor, where the floor is the mean of the same score for 5 rando
 A row is the median ratio over 3 draws (seeds 100-102) with its range; Agg is the geometric mean of the ratios over
 the ranked statistics.
 
-`--kernel tv` gives the Gaussian-TV kernels of the GraphRNN protocol: σ = 1 for degree and spectrum, σ = 30 on the mean
-orbit vector, and for clustering σ = the median TV distance between training graphs (`--sigma-clustering fitted`) or
-0.1 (`published`). Under these kernels the orbit statistic can saturate on dense graphs: it is left out of Agg on the
-paper corpora where it does, and `--saturation exclude` does the same on any corpus. On a paper corpus
-the TV floor is stored (`--measure-floor` measures it); under the EMD kernels the floor is always measured.
+`--kernel tv` gives the Gaussian-TV kernels of the GraphRNN / SPECTRE protocol: σ = 1 for degree and spectrum, σ = 30 on
+the mean orbit vector, and for clustering σ = 0.1 (`--sigma-clustering published`)
+or the median TV distance between training graphs (`fitted`, the default of `--kernel tv`). Under these kernels the orbit statistic can saturate on dense graphs: it is left out of Agg on the
+built-in datasets where it does, and `--saturation exclude` does the same on any corpus. On a built-in dataset
+the floor of `--kernel tv` with the fitted bandwidth is stored (`--measure-floor` measures it); every other setting
+measures the floor.

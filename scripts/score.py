@@ -3,7 +3,7 @@
     python scripts/score.py --name mmsbm_medium --data data --samples samples/mmsbm_mlp --out results/mmsbm_mlp.json
 Per draw: MMD^2 of degree, clustering, spectral, orbit and WL against the test split (LCC) and the C2ST accuracy. The
 default kernel is a Gaussian on the earth mover's distance with bandwidths fitted on the training graphs, so that no
-statistic saturates; --kernel tv gives the Gaussian-TV kernels of the GraphRNN protocol. Ratio = MMD^2 / train-vs-test
+statistic saturates; --kernel tv gives the Gaussian-TV kernels of the GraphRNN / SPECTRE protocol. Ratio = MMD^2 / train-vs-test
 floor; row = median over the draws [min, max]; Agg = geometric mean over the ranked statistics.
 """
 import argparse
@@ -26,7 +26,7 @@ def main():
                     help="TV clustering bandwidth: median train TV distance, or 0.1")
     ap.add_argument("--saturation", choices=("off", "report", "exclude"), default="report",
                     help="1 - kbar per statistic on the test set (^ when >= 0.9); exclude also leaves those out of Agg")
-    ap.add_argument("--measure-floor", action="store_true", help="measure the floor of a paper corpus")
+    ap.add_argument("--measure-floor", action="store_true", help="measure the floor of a built-in dataset")
     ap.add_argument("--out")
     ap.add_argument("--threads", type=int)
     a = ap.parse_args()
@@ -79,7 +79,7 @@ def main():
     keep = None if a.kernel == "tv" else ()
     row = M.aggregate(draws, floor, a.name, not_ranked=saturated if a.saturation == "exclude" else keep)
     print(f"[score] {a.name}: {len(draws)} draws, kernel {a.kernel}, clustering bandwidth {sigma:.4g}, floor "
-          f"{'measured' if measure else 'paper'} ({time.time() - t0:.0f} s)\n" + M.format_row(row, saturated) +
+          f"{'measured' if measure else 'stored'} ({time.time() - t0:.0f} s)\n" + M.format_row(row, saturated) +
           "\n(* = not ranked, ^ = saturated)")
     if a.out:
         os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)

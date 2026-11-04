@@ -1,4 +1,4 @@
-"""Build a corpus: a paper corpus (edge-checked), the SBM-2 example, or your own graphs.
+"""Build a corpus: a built-in dataset (edge-checked), the SBM-2 example, or your own graphs.
 
     python scripts/make_data.py mmsbm_medium --out data       # also citeseer_ego, lfr_v2, protein
     python scripts/make_data.py sbm2 --out data               # 400 two-block SBM graphs, n 40-120
@@ -33,7 +33,7 @@ def main():
         name = a.key
     for s in ("train", "val", "test"):
         data.load_split(name, s, root=a.out)
-    print(f"[make_data] {name}: done" + (" (edges identical to the paper corpus)" if name in data.PAPER_CORPORA else ""))
+    print(f"[make_data] {name}: done" + (" (edges match the stored hashes)" if name in data.PAPER_CORPORA else ""))
 
 
 if __name__ == "__main__":
